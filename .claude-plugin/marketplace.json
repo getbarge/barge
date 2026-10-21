@@ -1,5 +1,6 @@
 {
   "name": "getbarge",
+  "description": "Installable Barge skills: hand coding work to disposable cloud workers.",
   "owner": {
     "name": "getbarge"
   },
