@@ -1,0 +1,16 @@
+{
+  "name": "barge",
+  "version": "0.1.0",
+  "description": "Continue local Codex work in an isolated cloud development session.",
+  "author": {
+    "name": "Ben Bishop"
+  },
+  "homepage": "https://github.com/getbarge/barge",
+  "repository": "https://github.com/getbarge/barge",
+  "keywords": [
+    "workflow",
+    "cloud",
+    "handoff",
+    "codex"
+  ]
+}

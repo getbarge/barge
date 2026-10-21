@@ -1,0 +1,18 @@
+{
+  "name": "barge",
+  "version": "0.1.0",
+  "description": "Continue local Codex work in an isolated cloud development session.",
+  "author": {
+    "name": "Ben Bishop"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Barge",
+    "shortDescription": "Hand active development to a cloud worker.",
+    "longDescription": "Packages the current task and safe repository state, starts a cloud development session, and returns a dashboard URL so work continues after disconnecting.",
+    "developerName": "Ben Bishop",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Hand this coding task off to the cloud and return the session URL."
+  }
+}

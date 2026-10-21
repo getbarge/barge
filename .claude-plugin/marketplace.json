@@ -1,0 +1,17 @@
+{
+  "name": "getbarge",
+  "owner": {
+    "name": "getbarge"
+  },
+  "plugins": [
+    {
+      "name": "barge",
+      "source": "./",
+      "description": "Continue local Codex work in an isolated cloud development session.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Ben Bishop"
+      }
+    }
+  ]
+}
