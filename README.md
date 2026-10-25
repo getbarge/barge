@@ -51,7 +51,7 @@ Both return a session URL you can watch from any browser.
 
 ## Compatibility
 
-- Plugin version 0.1.0. Requires the `barge` CLI 0.1.0 or newer.
+- Plugin version 0.1.1. Requires the `barge` CLI 0.1.0 or newer.
 - Supported agents: Claude Code and Codex. Other harnesses are untested and not claimed.
 - Supported CLI platforms: linux-x64, linux-arm64, darwin-x64, darwin-arm64, windows-x64 (per-platform runtime smoke runs before each release publishes).
 

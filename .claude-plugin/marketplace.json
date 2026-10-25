@@ -1,6 +1,8 @@
 {
   "name": "getbarge",
-  "description": "Installable Barge skills: hand coding work to disposable cloud workers.",
+  "metadata": {
+    "description": "Installable Barge skills: hand coding work to disposable cloud workers."
+  },
   "owner": {
     "name": "getbarge"
   },
@@ -9,7 +11,7 @@
       "name": "barge",
       "source": "./",
       "description": "Continue local Codex work in an isolated cloud development session.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Ben Bishop"
       }
