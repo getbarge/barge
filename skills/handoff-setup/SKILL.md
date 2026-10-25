@@ -1,9 +1,12 @@
 ---
 name: handoff-setup
 description: Configure this machine for Barge by installing the CLI if needed, opening the dashboard, signing in, and connecting the user's own Barge account. Use when the user says /barge:handoff-setup, wants to set up Barge locally, or a $barge:handoff/`/barge:handoff` run fails because the barge CLI or its credentials are missing or invalid.
+argument-hint: "[control-plane-url]"
 ---
 
 # Barge Setup
+
+The user's request: $ARGUMENTS
 
 1. Resolve the control plane URL: an explicitly requested URL, otherwise `BARGE_URL` if already exported, otherwise ask the user for the dashboard URL (the hosted control plane is `https://getbarge.dev`). A `*.fly.dev` app hostname such as `cloud-handoff-control.fly.dev` is a legacy alias that stops resolving once the renamed Fly apps replace the old ones — when the control plane advertises a canonical URL (`barge setup` and `barge check` both surface it; `https://getbarge.dev` on the hosted deployment), prefer that advertised URL over a hardcoded guess.
 2. Ensure the `barge` CLI is installed, with the user's explicit approval for any download:

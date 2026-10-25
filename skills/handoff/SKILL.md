@@ -1,9 +1,12 @@
 ---
 name: handoff
 description: Start Barge work from a Linear issue or hand the current repository state and task to the cloud so work continues after the laptop disconnects. Use when the user says /barge:handoff, $barge:handoff, hand this off, start a Linear issue in the cloud, continue in the cloud, or close my laptop and keep working.
+argument-hint: "[issue-id | task text] [(alive)]"
 ---
 
 # Barge
+
+The user's request: $ARGUMENTS
 
 1. Confirm the current directory is a Git repository with a GitHub `origin` and resolve the origin to `<owner>/<repo>`.
 2. Select the flow from the user's request and the local repository's state — naming a Linear issue defaults to starting that issue fresh in the cloud, so "start fresh in the cloud" phrasing is not required; only an explicit request to hand off local work overrides that default. Check whether there is local work to preserve: `git status --porcelain` is non-empty, or the branch has an upstream and is ahead of it (`git rev-list --count @{u}..HEAD` is non-zero). A branch with no upstream configured is not by itself local work to preserve.

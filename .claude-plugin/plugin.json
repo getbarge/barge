@@ -1,6 +1,6 @@
 {
   "name": "barge",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Continue local Codex work in an isolated cloud development session.",
   "author": {
     "name": "Ben Bishop"
