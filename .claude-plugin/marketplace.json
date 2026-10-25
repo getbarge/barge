@@ -1,8 +1,6 @@
 {
   "name": "getbarge",
-  "metadata": {
-    "description": "Installable Barge skills: hand coding work to disposable cloud workers."
-  },
+  "description": "Installable Barge skills: hand coding work to disposable cloud workers.",
   "owner": {
     "name": "getbarge"
   },
