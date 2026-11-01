@@ -2,7 +2,7 @@
 
 Hand active coding work to a disposable cloud worker and keep working after your laptop disconnects. Barge packages your repository state (or starts from a GitHub ref), runs your coding agent in the cloud, and returns a draft pull request with a live session dashboard.
 
-This repository distributes the installable agent skills and the `barge` CLI. The application itself is developed in the private Barge repository; the skills here are synced from it automatically.
+This repository is the single editable home for the installable agent skills, plugin manifests, wrapper scripts, and the `barge` CLI installer. The application itself is developed in the private Barge repository; the CLI binaries are published to [Releases](https://github.com/getbarge/barge/releases) from there.
 
 ## Install
 
