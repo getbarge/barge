@@ -55,6 +55,12 @@ Both return a session URL you can watch from any browser.
 - Supported agents: Claude Code and Codex. Other harnesses are untested and not claimed.
 - Supported CLI platforms: linux-x64, linux-arm64, darwin-x64, darwin-arm64, windows-x64 (per-platform runtime smoke runs before each release publishes).
 
+## Built with
+
+Developed with help from [Barge](https://getbarge.io/?utm_source=github&utm_medium=referral&utm_campaign=barge&utm_content=getbarge-barge-readme-text), a cloud runtime environment for coding agents.
+
+<a href="https://getbarge.io/?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=barge&amp;utm_content=getbarge-barge-readme-badge"><picture><source media="(prefers-color-scheme: dark)" srcset="https://getbarge.io/brand/built-with-barge-dark.svg"><img alt="Built with Barge - visit getbarge.io" height="32" src="https://getbarge.io/brand/built-with-barge-light.svg" width="137"></picture></a>
+
 ## License
 
 [MIT](LICENSE)
