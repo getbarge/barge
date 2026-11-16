@@ -49,9 +49,25 @@ Barge is in an invite-only beta: request admission at [getbarge.io](https://getb
 
 Both return a session URL you can watch from any browser.
 
+### Retry or start a new attempt
+
+CLI and skills v0.1.4 distinguish three operations:
+
+- Observe without starting compute: `barge watch <session-id> --json`.
+- Retry a failed session with its original inputs and resources:
+  `barge retry <session-id> --watch --json`.
+- Explicitly authorize a separate paid session:
+  `barge work --repo owner/repo --ref main --issue BSH-123 --new-attempt attempt-2 --json`.
+  Add requested `--cpu`, `--memory`, or `--timeout-minutes` overrides to size the new
+  attempt. Repeat the identical command and attempt id to recover, not to pay twice.
+
+The handoff skill supports these requests too. Retry keeps the session ID and history;
+a fresh attempt leaves the earlier session untouched. A retry acknowledgment is not a
+completed job. Watch disconnection only detaches monitoring and never cancels cloud work.
+
 ## Compatibility
 
-- Plugin version 0.1.1. Requires the `barge` CLI 0.1.0 or newer.
+- Plugin version 0.1.4. Basic handoff requires CLI 0.1.0 or newer; retry and fresh-attempt workflows require CLI 0.1.4 or newer.
 - Supported agents: Claude Code and Codex. Other harnesses are untested and not claimed.
 - Supported CLI platforms: linux-x64, linux-arm64, darwin-x64, darwin-arm64, windows-x64 (per-platform runtime smoke runs before each release publishes).
 
