@@ -1,12 +1,47 @@
 ---
 name: handoff
-description: Start Barge work from a Linear issue or hand the current repository state and task to the cloud so work continues after the laptop disconnects. Use when the user says /barge:handoff, $barge:handoff, hand this off, start a Linear issue in the cloud, continue in the cloud, or close my laptop and keep working.
+description: Start Barge work from a Linear issue, retry a failed session, explicitly start a new attempt, or hand current repository work to the cloud. Use when the user says /barge:handoff, $barge:handoff, hand this off, retry a Barge session, start a new Barge attempt, start a Linear issue in the cloud, continue in the cloud, or close my laptop and keep working.
 argument-hint: "[issue-id | task text] [(alive)]"
 ---
 
 # Barge
 
 The user's request: $ARGUMENTS
+
+## Recover or observe existing work
+
+Before selecting a submission flow below, distinguish observation, same-session retry,
+and a new paid attempt. Require Barge CLI 0.1.4 or newer for retry and fresh attempts;
+inspect `barge version` and `barge help` before using them. If unsupported, ask the user
+to upgrade manually or approve setup; never silently install or upgrade.
+
+- **Observe or reattach:** Run `barge watch <session-id> --json` for a known session.
+  Repeating an identical `barge work` command resumes its recorded submission, even
+  when it already finished. Neither operation authorizes another paid session.
+- **Same-session retry:** Only with explicit authorization to restart compute, run
+  `barge retry <session-id> --watch --json`. Only failed sessions are eligible.
+  Retry retains the session ID, inputs, resources, timeout, and history; it accepts
+  no resource or model overrides. Distinguish the `retried` acknowledgment from the
+  later terminal result. On an uncertain outcome, inspect with `barge get <session-id>`;
+  never blindly replay the mutation.
+- **Fresh attempt:** Only with explicit authorization for a new paid session, use
+  `barge work --repo <owner/repo> --ref <ref> --issue <issue-id-or-url> --new-attempt <id> --json`
+  (or `--task "<task>"` instead of `--issue`). Choose and record a stable attempt id
+  before submission; recover an interrupted submission with the identical command
+  and id, not a new one. `--new-attempt <id>` scopes a separate session and recovery
+  record; it does not retry, cancel, or alter the earlier session. Pass `--cpu`,
+  `--memory`, or `--timeout-minutes` only as requested. Verify the `submitted` event
+  echoes the expected `attempt` and record its session ID before reporting success.
+  A missing `attempt` indicates an unsupported CLI; stop rather than resubmitting.
+  A changed idempotency key alone is not a fresh-attempt workflow: never delete or edit submission records.
+
+Use the CLI's shared push-backed observer, reconnect/replay, and bounded older-server
+fallback. Do not implement another polling loop. Losing an observer only detaches;
+recover with `barge watch` for the recorded session, never by submitting again.
+Report remote completion separately from PR readiness, failed checks, or conflicts.
+Do not merge, deploy, or cancel without specific authorization.
+
+## Start or hand off work
 
 1. Confirm the current directory is a Git repository with a GitHub `origin` and resolve the origin to `<owner>/<repo>`.
 2. Select the flow from the user's request and the local repository's state — naming a Linear issue defaults to starting that issue fresh in the cloud, so "start fresh in the cloud" phrasing is not required; only an explicit request to hand off local work overrides that default. Check whether there is local work to preserve: `git status --porcelain` is non-empty, or the branch has an upstream and is ahead of it (`git rev-list --count @{u}..HEAD` is non-zero). A branch with no upstream configured is not by itself local work to preserve.

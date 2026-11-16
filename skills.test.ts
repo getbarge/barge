@@ -69,6 +69,17 @@ describe("handoff-setup skill", () => {
 });
 
 describe("handoff skill", () => {
+  test("distinguishes explicit fresh attempts, retries, and read-only observation", async () => {
+    const text = await skill("handoff");
+    expect(text).toContain("--new-attempt <id>");
+    expect(text).toContain("barge retry <session-id> --watch --json");
+    expect(text).toContain("barge watch <session-id> --json");
+    expect(text).toContain("explicit authorization");
+    expect(text).toContain("never delete or edit submission records");
+    expect(text).toContain("never blindly replay");
+    expect(text).toContain("0.1.4");
+  });
+
   test("declares its name and trigger description", async () => {
     const meta = frontmatter(await skill("handoff"));
     expect(meta.name).toBe("handoff");
